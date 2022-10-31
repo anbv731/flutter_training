@@ -1,18 +1,18 @@
 abstract class Film {
-  String id;
-  String title;
-  String picture;
-  double voteAverage;
-  String releaseDate;
-  String description;
-  String language;
-
-  Film(
+  const Film.fullConstructor(
       {required this.id,
       required this.title,
-      required this.description,
       required this.picture,
-      required this.releaseDate,
+      required this.voteAverage,
+      required this.description,
       required this.language,
-      required this.voteAverage});
+      required this.releaseDate});
+
+  final String id;
+  final String title;
+  final String picture;
+  final double voteAverage;
+  final String releaseDate;
+  final String description;
+  final String language;
 }

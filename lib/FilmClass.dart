@@ -11,7 +11,7 @@ class FilmClass extends Film with LanguageConverter {
       required String releaseDate,
       required String description,
       required String language})
-      : super(
+      : super.fullConstructor(
             id: id,
             title: title,
             picture: picture,
@@ -24,5 +24,3 @@ class FilmClass extends Film with LanguageConverter {
     return convert(language);
   }
 }
-
-
