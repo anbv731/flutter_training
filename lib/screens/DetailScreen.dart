@@ -2,39 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_training/FilmClass.dart';
 import 'package:flutter_training/screens/widgets/FilmPreview.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class DetailScreen extends StatelessWidget {
+  const DetailScreen({Key? key}) : super(key: key);
+  static const route = '/detailScreen';
 
   @override
   Widget build(BuildContext context) {
-    final List<FilmClass> films = getFilmList();
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter training'),
-        ),
-        body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                Colors.blue,
-                Colors.blueGrey,
-                Colors.green,
-              ])),
-          child: ListView.builder(
-              itemCount: films.length,
-              itemBuilder: (context, index) =>
-                  FilmPreview.fromFilmClass(films[index], () {
-                    addToFavourite(films[index].id);
-                  })),
-        ));
-  }
-
-  void addToFavourite(String id) {
-  print("add to favourite id: " + id);}
-
-  List<FilmClass> getFilmList() {
     List<FilmClass> list = [
       FilmClass(
           id: '1',
@@ -97,6 +70,10 @@ class SearchPage extends StatelessWidget {
               'Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond',
           language: 'English')
     ];
-    return list;
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+    return Container(
+      child: FilmPreview.fromFilmClass(
+          list.firstWhere((element) => element.id == args), () {}),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/screens/DetailScreen.dart';
 import 'package:flutter_training/screens/FavouritePage.dart';
 import 'package:flutter_training/screens/SearchPage.dart';
 
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/':(context) => const MainScreen(),
+        DetailScreen.route: (context)=> const DetailScreen()
+      },
     );
   }
 }
